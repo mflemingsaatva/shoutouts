@@ -44,9 +44,7 @@
     "redis": "^2.8.0",
     "styled-components": "^3.4.9",
     "webpack": "^4.19.1",
-    "webpack-cli": "^2.1.5"
-  },
-  "devDependencies": {
+    "webpack-cli": "^2.1.5",
     "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "browser-sync-webpack-plugin": "^2.2.2",
