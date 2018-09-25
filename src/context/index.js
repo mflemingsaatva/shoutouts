@@ -40,9 +40,8 @@ export class MyProvider extends Component {
 	updateUser (userId) {
 		axios.get(`/api/users/${userId}`)
 			.then(({ data }) => {
-				console.log(data)
 				this.setState({
-                    userStatusText: data.data.user.profile.status_text,
+                    userStatusText: `is ${data.data.user.profile.status_text}`,
                     avatarUrl: data.data.user.profile.image_original,
                     userName: data.data.user.profile.real_name
                 });

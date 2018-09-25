@@ -15,7 +15,6 @@ class User extends Component {
     }
 
     render () {
-        console.log(this.props)
         return (
             <UserProfile>
                 <MyContext.Consumer>
@@ -24,7 +23,7 @@ class User extends Component {
                             {console.log(state)}
                             <img src={state.avatarUrl}/>
                             <h1>{state.userName}</h1>
-                            <h2>{state.userStatusText}</h2>
+                            <h3>{state.userStatusText}</h3>
                         </React.Fragment>
                     )}
                 </MyContext.Consumer>

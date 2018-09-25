@@ -17,6 +17,9 @@ const apiUtil = require('../util/api.util');
 const wav = require('node-wav');
 api.get('/read', (req, res) => {
     if (!req.query.text) return apiUtil.respond(res, null, 0, 'text query required');
+    const fileName = `${req.query.text}`;
+    const audioFilePath = path.join(__dirname, `../audio/${fileName}.mp3`);
+    if (fs.existsSync(audioFilePath)) return apiUtil.respond(res, fileName); // treat like a cache
 
     const request = {
         input: { text: req.query.text },
@@ -26,9 +29,8 @@ api.get('/read', (req, res) => {
 
     client.synthesizeSpeech(request, (err, response) => {
         if (err) return apiUtil.respond(res, null, 0, err.message);
-        // const result = wav.decode(response.audioContent);
-        // wav.encode(result.channelData, { sampleRate: result.sampleRate, float: true, bitDepth: 32 });
-        const txtFile = path.join(__dirname, `../text/test.txt`);
+        
+        const txtFile = path.join(__dirname, `../text/${fileName}.txt`);
         const audioFileName = `${req.query.text}.mp3`
         const audioFilePath = path.join(__dirname, `../audio/${audioFileName}`);
         fs.writeFile(
@@ -42,15 +44,6 @@ api.get('/read', (req, res) => {
                 return apiUtil.respond(res, audioFileName);
             }
         );
-        // return apiUtil.respond(res, response.audioContent.toString('base64'));
-
-        // const pathToSound = path.join(__dirname, `audio/${new Date()}.wav`);
-        // const bufferStream = new stream.PassThrough();
-        // bufferStream.end(response.audioContent.data);
-        // bufferStream.pipe(process.stdout);
-        // bufferStream.on('end', () => console.log('frig'))
-        // bufferStream.on('error', (e) => console.log(e))
-        // return;
     });
 
 });
@@ -81,7 +74,6 @@ api.get('/shoutouts', (req, res) => {
         url: `${SHOUTOUTS_SERVER}/api/all`,
         method: 'GET',
     }).then(data => {
-        console.log('response from shoutouts server', data)
         const formatted = data.map(so => {
             return {
                 giver: so.giver,

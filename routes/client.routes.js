@@ -15,7 +15,12 @@ function htmlTemplate (user) {
 					font: inherit;
 					vertical-align: baseline;
 				}
+
+				div {
+					font-family: 'Roboto', sans-serif;
+				}
 			</style>
+			<link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto" rel="stylesheet">
 		</head>
 		<html>
 			<body style="">

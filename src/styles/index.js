@@ -39,6 +39,7 @@ export const Nav = styled.nav`
     overflow: hidden;
     border-bottom: 5px solid black;
     margin-bottom: 1rem;
+    font-family: 'Permanent Marker', cursive;
 
     a {
         float: left;
