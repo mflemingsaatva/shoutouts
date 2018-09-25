@@ -36,6 +36,7 @@ exports.callback = (req, res) => {
 				code,
 			},
 		}).then(data => {
+			// req.session.access_token = data.access_token;
 			// https://stackoverflow.com/questions/50971247/expected-behaviour-of-sign-in-with-slack
 			apiUtil.request({
 				url: `https://slack.com/api/users.identity?token=${data.access_token}`,

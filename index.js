@@ -1,14 +1,15 @@
 require('dotenv').config();
 
 const express = require('express');
-const { PORT, SESSION_SECRET } = process.env;
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const redisClient = require('./config/redis.config');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 const morgan = require('morgan');
+const redisClient = require('./config/redis.config');
+
+const { PORT, SESSION_SECRET } = process.env;
 
 const app = express();
 

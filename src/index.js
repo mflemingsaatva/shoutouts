@@ -1,35 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import apiUtil from '../util/api.util';
 
-// import App from './containers/App';
-import reducer from './reducers';
+import App from './components/App';
+import { MyProvider } from './context';
 
-class App extends React.Component {
-	constructor () {
-		super();
-		this.state = {
-			data: ''
-		};
-	}
-
-	componentWillMount () {
-		console.log('callin!')
-		apiUtil.request({
-			url: '/api/helloWorld',
-			method: 'GET',
-		}).then(data => this.setState({ data }));
-	}
-
-	render () {
-		return (
-			<p>{JSON.stringify(this.state.data)}</p>
-		);
-	}
-}
 
 ReactDOM.render(
-	<App />,
+	<MyProvider>
+		<App />
+	</MyProvider>,
 	document.getElementById('root')
 );
 
