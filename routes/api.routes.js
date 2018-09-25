@@ -29,7 +29,8 @@ api.get('/read', (req, res) => {
         // const result = wav.decode(response.audioContent);
         // wav.encode(result.channelData, { sampleRate: result.sampleRate, float: true, bitDepth: 32 });
         const txtFile = path.join(__dirname, `../text/test.txt`);
-        const audioFile = path.join(__dirname, `../audio/test.mp3`);
+        const audioFileName = `${req.query.text}.mp3`
+        const audioFilePath = path.join(__dirname, `../audio/${audioFileName}`);
         fs.writeFile(
             txtFile, 
             response.audioContent,
@@ -37,8 +38,8 @@ api.get('/read', (req, res) => {
                 if (err) return apiUtil.respond(res, null, 0, err.message);
                 const base64js = require('base64-js');
                 const byteArray = base64js.toByteArray(fs.readFileSync(txtFile, 'base64'));
-                fs.writeFileSync(audioFile, byteArray);
-                return apiUtil.respond(res, 'test.mp3');
+                fs.writeFileSync(audioFilePath, byteArray);
+                return apiUtil.respond(res, audioFileName);
             }
         );
         // return apiUtil.respond(res, response.audioContent.toString('base64'));
