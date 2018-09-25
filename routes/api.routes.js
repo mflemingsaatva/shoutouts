@@ -11,10 +11,10 @@ const client = new textToSpeech.TextToSpeechClient();
 const { SLACK_TOKEN, SHOUTOUTS_SERVER, GOOGLE_APPLICATION_CREDENTIALS } = process.env;
 const stream = require('stream');
 const exec = require('child_process').exec;
-// const googleAuthPath = path.join(__dirname, GOOGLE_APPLICATION_CREDENTIALS);
 
 const apiUtil = require('../util/api.util');
 const wav = require('node-wav');
+
 api.get('/read', (req, res) => {
     if (!req.query.text) return apiUtil.respond(res, null, 0, 'text query required');
     const fileName = `${req.query.text}`;

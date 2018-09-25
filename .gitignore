@@ -4,5 +4,5 @@ dump.rdb
 dist/
 node_modules
 .env
-audio/
-text/
+audio/*
+text/*
