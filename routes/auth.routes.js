@@ -33,6 +33,7 @@ exports.callback = (req, res) => {
 			params: {
 				client_id: CLIENT_ID,
 				client_secret: CLIENT_SECRET,
+				redirect_uri: REDIRECT_URL,
 				code,
 			},
 		}).then(data => {
