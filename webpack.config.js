@@ -29,12 +29,12 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    new BrowserSyncPlugin({
-      host: 'localhost',
-      port: '8080',
-      proxy: 'http://localhost:4000'
-    }),
-  ],
+  // plugins: [
+  //   new BrowserSyncPlugin({
+  //     host: 'localhost',
+  //     port: '8080',
+  //     proxy: 'http://localhost:4000'
+  //   }),
+  // ],
 };
 
