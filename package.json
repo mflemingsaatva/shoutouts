@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run build && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "./node_modules/.bin/webpack --progress --colors --watch",
     "build": "./node_modules/.bin/webpack --progress --colors --watch",
     "dev": "./node_modules/.bin/nodemon -e js,html",
     "proxy": "./node_modules/ngrok/bin/ngrok http -subdomain=shoutoutz 8080"
