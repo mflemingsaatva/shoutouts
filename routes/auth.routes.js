@@ -47,6 +47,7 @@ exports.callback = (req, res) => {
 				res.redirect('/');
 			})
 		})
+		.catch(err => apiUtil.respond(res, null, 500, err));
 	}
 };
 
